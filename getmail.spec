@@ -1,4 +1,5 @@
-Summary:	getmail is a mail retriever designed to allow you to get your mail
+Summary:	getmail - a mail retriever designed to allow you to get your mail
+Summary(pl):	getmail - program do ¶ci±gania poczty
 Name:		getmail
 Version:	4.3.10
 Release:	0.1
@@ -23,6 +24,17 @@ into qmail-style Maildirs, mboxrd files, or through external MDAs
 has excellent support for domain (multidrop) mailboxes, including
 delivering messages to different users or destinations based on the
 envelope recipient address.
+
+%description -l pl
+getmail ma byæ prostym, bezpiecznym i pewnym zamiennikiem fetchmaila.
+¦ci±ga pocztê elektroniczn± (wszystkie wiadomo¶ci albo tylko
+nieprzeczytane) z jednego lub wiêkszej liczby serwerów POP3, SPDS lub
+IMAP4 (z lub bez SSL) dla jednego lub wiêkszej liczby kont pocztowych,
+a nastêpnie w pewny sposób dostarcza j± do skrzynek Maildir w stylu
+qmaila, plików mboxrd albo poprzez zewnêtrzne polecenia MDA podawane
+dla ka¿dego konta. getmail ma tak¿e dobr± obs³ugê skrzynek domenowych
+(multidrop), w³±cznie z dostarczaniem wiadomo¶ci do ró¿nych
+u¿ytkowników lub celów w oparciu o adres adresata na kopercie.
 
 %prep
 %setup -q
