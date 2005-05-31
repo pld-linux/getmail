@@ -2,7 +2,7 @@ Summary:	getmail - a mail retriever designed to allow you to get your mail
 Summary(pl):	getmail - program do ¶ci±gania poczty
 Name:		getmail
 Version:	4.3.10
-Release:	0.1
+Release:	1
 License:	GPL v2
 Group:		Applications/Mail
 Source0:	http://pyropus.ca/software/getmail/old-versions/%{name}-%{version}.tar.gz
