@@ -1,12 +1,12 @@
 Summary:	getmail - a mail retriever designed to allow you to get your mail
 Summary(pl):	getmail - program do ¶ci±gania poczty
 Name:		getmail
-Version:	4.4.2
+Version:	4.4.4
 Release:	1
 License:	GPL v2
 Group:		Applications/Mail
 Source0:	http://pyropus.ca/software/getmail/old-versions/%{name}-%{version}.tar.gz
-# Source0-md5:	39be53e828b91ba5307ff2c97fd6f105
+# Source0-md5:	349234f4ff7937d00615faf917b7251e
 URL:		http://pyropus.ca/software/getmail/
 BuildRequires:	python-devel >= 2.3.3
 BuildRequires:	rpm-pythonprov
