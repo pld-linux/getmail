@@ -1,5 +1,5 @@
 Summary:	getmail - a mail retriever designed to allow you to get your mail
-Summary(pl):	getmail - program do ¶ci±gania poczty
+Summary(pl.UTF-8):   getmail - program do Å›ciÄ…gania poczty
 Name:		getmail
 Version:	4.6.7
 Release:	1
@@ -25,16 +25,16 @@ has excellent support for domain (multidrop) mailboxes, including
 delivering messages to different users or destinations based on the
 envelope recipient address.
 
-%description -l pl
-getmail ma byæ prostym, bezpiecznym i pewnym zamiennikiem fetchmaila.
-¦ci±ga pocztê elektroniczn± (wszystkie wiadomo¶ci albo tylko
-nieprzeczytane) z jednego lub wiêkszej liczby serwerów POP3, SPDS lub
-IMAP4 (z lub bez SSL) dla jednego lub wiêkszej liczby kont pocztowych,
-a nastêpnie w pewny sposób dostarcza j± do skrzynek Maildir w stylu
-qmaila, plików mboxrd albo poprzez zewnêtrzne polecenia MDA podawane
-dla ka¿dego konta. getmail ma tak¿e dobr± obs³ugê skrzynek domenowych
-(multidrop), w³±cznie z dostarczaniem wiadomo¶ci do ró¿nych
-u¿ytkowników lub celów w oparciu o adres adresata na kopercie.
+%description -l pl.UTF-8
+getmail ma byÄ‡ prostym, bezpiecznym i pewnym zamiennikiem fetchmaila.
+ÅšciÄ…ga pocztÄ™ elektronicznÄ… (wszystkie wiadomoÅ›ci albo tylko
+nieprzeczytane) z jednego lub wiÄ™kszej liczby serwerÃ³w POP3, SPDS lub
+IMAP4 (z lub bez SSL) dla jednego lub wiÄ™kszej liczby kont pocztowych,
+a nastÄ™pnie w pewny sposÃ³b dostarcza jÄ… do skrzynek Maildir w stylu
+qmaila, plikÃ³w mboxrd albo poprzez zewnÄ™trzne polecenia MDA podawane
+dla kaÅ¼dego konta. getmail ma takÅ¼e dobrÄ… obsÅ‚ugÄ™ skrzynek domenowych
+(multidrop), wÅ‚Ä…cznie z dostarczaniem wiadomoÅ›ci do rÃ³Å¼nych
+uÅ¼ytkownikÃ³w lub celÃ³w w oparciu o adres adresata na kopercie.
 
 %prep
 %setup -q
