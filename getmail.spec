@@ -8,7 +8,7 @@ Group:		Applications/Mail
 Source0:	http://pyropus.ca/software/getmail/old-versions/%{name}-%{version}.tar.gz
 # Source0-md5:	ee17ddba077ca2cf43e4a2b96fc06a27
 URL:		http://pyropus.ca/software/getmail/
-BuildRequires:	python-devel >= 2.3.3
+BuildRequires:	python-devel >= 1:2.3.3
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-modules
 BuildArch:	noarch
@@ -40,12 +40,12 @@ użytkowników lub celów w oparciu o adres adresata na kopercie.
 %setup -q
 
 %build
-python setup.py build
+%{__python} setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-python setup.py install --optimize=2 --root=$RPM_BUILD_ROOT
+%{__python} setup.py install --optimize=2 --root=$RPM_BUILD_ROOT
 
 find $RPM_BUILD_ROOT%{py_sitescriptdir} -name \*.py -exec rm -f {} \;
 
