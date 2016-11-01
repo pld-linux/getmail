@@ -1,12 +1,12 @@
 Summary:	getmail - a mail retriever designed to allow you to get your mail
 Summary(pl.UTF-8):	getmail - program do ściągania poczty
 Name:		getmail
-Version:	4.13.0
-Release:	2
+Version:	4.52.0
+Release:	1
 License:	GPL v2
 Group:		Applications/Mail
 Source0:	http://pyropus.ca/software/getmail/old-versions/%{name}-%{version}.tar.gz
-# Source0-md5:	e1b290c36912e62446dfc9a5203539ca
+# Source0-md5:	5aa4dc9901bf4beb83ced9ac4bceaa9e
 URL:		http://pyropus.ca/software/getmail/
 BuildRequires:	python-devel >= 1:2.3.3
 BuildRequires:	rpm-pythonprov
@@ -45,16 +45,17 @@ użytkowników lub celów w oparciu o adres adresata na kopercie.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__python} setup.py install --optimize=2 --root=$RPM_BUILD_ROOT
+%{__python} setup.py install --prefix=%{_prefix} --install-purelib=%{py_sitescriptdir} --optimize=2 --root=$RPM_BUILD_ROOT
 
 find $RPM_BUILD_ROOT%{py_sitescriptdir} -name \*.py -exec rm -f {} \;
+rm -rf $RPM_BUILD_ROOT%{_defaultdocdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README docs/{CHANGELOG,THANKS,TODO,getmailrc-examples} docs/*.txt
+%doc README docs/{BUGS,CHANGELOG,THANKS,TODO,getmailrc-examples} docs/*.txt
 %attr(755,root,root) %{_bindir}/*
 %{py_sitescriptdir}/getmail*
 %{_mandir}/man1/*
