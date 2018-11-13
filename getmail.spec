@@ -45,7 +45,7 @@ użytkowników lub celów w oparciu o adres adresata na kopercie.
 %{__sed} -i -e '1s,^#!.*python,#!%{__python},' %{name} %{name}-gmail-xoauth-tokens %{name}_{maildir,fetch,mbox} %{name}core/*.py
 
 %build
-%py_build %{?with_tests:test}
+%py_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -73,4 +73,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/getmail_mbox.1*
 %{py_sitescriptdir}/getmail*.egg-info
 %{py_sitescriptdir}/getmailcore/
-
