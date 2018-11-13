@@ -1,16 +1,18 @@
 Summary:	getmail - a mail retriever designed to allow you to get your mail
 Summary(pl.UTF-8):	getmail - program do ściągania poczty
 Name:		getmail
-Version:	4.52.0
+Version:	5.8
 Release:	1
 License:	GPL v2
 Group:		Applications/Mail
 Source0:	http://pyropus.ca/software/getmail/old-versions/%{name}-%{version}.tar.gz
-# Source0-md5:	5aa4dc9901bf4beb83ced9ac4bceaa9e
+# Source0-md5:	99c02144d1238393fc1a7ff67964887d
 URL:		http://pyropus.ca/software/getmail/
-BuildRequires:	python-devel >= 1:2.3.3
+BuildRequires:	python-modules
+BuildRequires:	python-setuptools
 BuildRequires:	rpm-pythonprov
-%pyrequires_eq	python-modules
+BuildRequires:	rpmbuild(macros) >= 1.714
+BuildRequires:	sed >= 4.0
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -39,23 +41,36 @@ użytkowników lub celów w oparciu o adres adresata na kopercie.
 %prep
 %setup -q
 
+# fix #!%{_bindir}/env python -> #!%{_bindir}/python:
+%{__sed} -i -e '1s,^#!.*python,#!%{__python},' %{name} %{name}-gmail-xoauth-tokens %{name}_{maildir,fetch,mbox} %{name}core/*.py
+
 %build
-%{__python} setup.py build
+%py_build %{?with_tests:test}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__python} setup.py install --prefix=%{_prefix} --install-purelib=%{py_sitescriptdir} --optimize=2 --root=$RPM_BUILD_ROOT
+%py_install
 
-find $RPM_BUILD_ROOT%{py_sitescriptdir} -name \*.py -exec rm -f {} \;
-rm -rf $RPM_BUILD_ROOT%{_defaultdocdir}
+%py_postclean
+
+rm -rf $RPM_BUILD_ROOT/%{_docdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README docs/{BUGS,CHANGELOG,THANKS,TODO,getmailrc-examples} docs/*.txt
-%attr(755,root,root) %{_bindir}/*
-%{py_sitescriptdir}/getmail*
-%{_mandir}/man1/*
+%doc README docs/*
+%attr(755,root,root) %{_bindir}/getmail
+%attr(755,root,root) %{_bindir}/getmail_fetch
+%attr(755,root,root) %{_bindir}/getmail_maildir
+%attr(755,root,root) %{_bindir}/getmail_mbox
+%attr(755,root,root) %{_bindir}/getmail-gmail-xoauth-tokens
+%{_mandir}/man1/getmail.1*
+%{_mandir}/man1/getmail_fetch.1*
+%{_mandir}/man1/getmail_maildir.1*
+%{_mandir}/man1/getmail_mbox.1*
+%{py_sitescriptdir}/getmail*.egg-info
+%{py_sitescriptdir}/getmailcore/
+
