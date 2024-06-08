@@ -1,14 +1,14 @@
 Summary:	getmail - a mail retriever designed to allow you to get your mail
 Summary(pl.UTF-8):	getmail - program do ściągania poczty
 Name:		getmail
-Version:	5.13
-Release:	2
+Version:	5.16
+Release:	1
 License:	GPL v2
 Group:		Applications/Mail
-Source0:	http://pyropus.ca/software/getmail/old-versions/%{name}-%{version}.tar.gz
-# Source0-md5:	a92f3b209f475a0ad0802e3d30435681
-URL:		http://pyropus.ca/software/getmail/
-BuildRequires:	python-modules
+Source0:	https://pyropus.ca/software/getmail/old-versions/%{name}-%{version}.tar.gz
+# Source0-md5:	7fc73f686db80022593b0147a4ff0d77
+URL:		https://pyropus.ca/software/getmail/
+BuildRequires:	python-modules >= 2.3.3
 BuildRequires:	python-setuptools
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
@@ -42,7 +42,7 @@ użytkowników lub celów w oparciu o adres adresata na kopercie.
 %setup -q
 
 # fix #!%{_bindir}/env python -> #!%{_bindir}/python:
-%{__sed} -i -e '1s,^#!.*python,#!%{__python},' %{name} %{name}-gmail-xoauth-tokens %{name}_{maildir,fetch,mbox} %{name}core/*.py
+%{__sed} -i -e '1s,/usr/bin/env python2,%{__python},' %{name} %{name}-gmail-xoauth-tokens %{name}_{fetch,maildir,mbox} getmailcore/*.py
 
 %build
 %py_build
@@ -54,14 +54,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %py_postclean
 
-rm -rf $RPM_BUILD_ROOT/%{_docdir}/%{name}-%{version}
+# packaged as %doc
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README docs/*
+%doc README docs/{BUGS,CHANGELOG,THANKS,TODO,getmailrc-examples,*.css,*.html}
 %attr(755,root,root) %{_bindir}/getmail
 %attr(755,root,root) %{_bindir}/getmail_fetch
 %attr(755,root,root) %{_bindir}/getmail_maildir
@@ -71,5 +72,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/getmail_fetch.1*
 %{_mandir}/man1/getmail_maildir.1*
 %{_mandir}/man1/getmail_mbox.1*
-%{py_sitescriptdir}/getmail*.egg-info
-%{py_sitescriptdir}/getmailcore/
+%{py_sitescriptdir}/getmail-%{version}-py*.egg-info
+%{py_sitescriptdir}/getmailcore
